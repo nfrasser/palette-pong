@@ -12,7 +12,9 @@ const dim = {
     }
 }
 
-const delta = 10
+// Starting speed for the x/y coordinates
+const componentspeed = 10
+const speed = Math.sqrt(2 * componentspeed * componentspeed) // hypotenuse
 
 // Calculate the centre
 const centre = {
@@ -84,8 +86,8 @@ class Ball {
         // Bounce off the horizontal walls
         if (y - r <= 0 || y + r >= dim.table.h) this.velocity.y *= -1
 
-        // Bounce off the p1 paddle
         if (x - r <= 0) {
+            // Bounce off the paddle 1?
             let diff = y - p1.getPixelPos()
             if (diff > dim.paddle.h || diff < 0) {
                 // Miss!
@@ -95,9 +97,18 @@ class Ball {
                 y = Infinity
             } else {
                 // Hit!
-                this.velocity.x *= -1
+                let range = dim.paddle.h/2
+
+                // Angle severity between -1 and 1
+                let severity = (diff-range)/range
+
+                // Determine a new angle between -60 and 60 degrees
+                let theta = severity * Math.PI/3
+                this.velocity.x = Math.round(Math.cos(theta)*speed)
+                this.velocity.y = Math.round(Math.sin(theta)*speed)
             }
         } else if (x + r >= dim.table.w) {
+            // Bounce off the paddle 2?
             let diff = y - p2.getPixelPos()
             if (diff > dim.paddle.h || diff < 0) {
                 // Miss!
@@ -106,7 +117,16 @@ class Ball {
                 x = Infinity
                 y = Infinity
             } else {
-                this.velocity.x *= -1
+                // Hit!
+                let range = dim.paddle.h/2
+
+                // Angle severity between -1 and 1
+                let severity = (diff-range)/range
+
+                // Determine a new angle between -60 and 60 degrees
+                let theta = severity * Math.PI/3
+                this.velocity.x = -Math.round(Math.cos(theta)*speed)
+                this.velocity.y = Math.round(Math.sin(theta)*speed)
             }
         }
 
@@ -128,8 +148,8 @@ class Ball {
         if (this.started) return
         this.pos.x = centre.x
         this.pos.y = centre.y
-        this.velocity.x = Math.random() < 0.5 ? delta : -delta
-        this.velocity.y = Math.random() < 0.5 ? delta : -delta
+        this.velocity.x = Math.random() < 0.5 ? componentspeed : -componentspeed
+        this.velocity.y = Math.random() < 0.5 ? componentspeed : -componentspeed
         this.started = true
     }
 
@@ -175,8 +195,7 @@ document.addEventListener('palette-controller', (event) => {
 })
 
 document.addEventListener('palette-note-on', () => {
-    if (ball.started) ball.stop()
-    else ball.start()
+    if (!ball.started) ball.start()
 })
 
 requestAnimationFrame(draw)
