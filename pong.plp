@@ -1,0 +1,89 @@
+{
+    "app_version": "2.0",
+    "hide_unassigned": false,
+    "layout": {
+        "c": [
+            null,
+            {
+                "c": [
+                    {
+                        "c": [
+                            null,
+                            null,
+                            null,
+                            null,
+                            null
+                        ],
+                        "i": 3,
+                        "t": 3,
+                        "u": "  B1v"
+                    },
+                    null,
+                    null
+                ],
+                "i": 2,
+                "t": 1,
+                "u": "  A=7"
+            },
+            {
+                "c": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ],
+                "i": 4,
+                "t": 3,
+                "u": "  BQw"
+            }
+        ],
+        "i": 1,
+        "t": 0,
+        "u": "00005"
+    },
+    "midiChannel": 1,
+    "module_mappings": {
+        "colorMap": {
+        },
+        "keyMap": {
+        },
+        "mediaMap": {
+        },
+        "midi_map": {
+            "  A=7": {
+                "cc": -1,
+                "n": 0
+            },
+            "  B1v": {
+                "cc": 2,
+                "n": -13
+            },
+            "  BQw": {
+                "cc": 1,
+                "n": -1
+            },
+            "channel": 1
+        },
+        "shortcutsMap": {
+        }
+    },
+    "old_priorities": {
+        "old_buttons": [
+        ],
+        "old_dials": [
+        ],
+        "old_sliders": [
+        ]
+    },
+    "os": "mac",
+    "priorities": [
+        "  A=7",
+        "  BQw",
+        "  B1v"
+    ],
+    "tabType": "MIDI",
+    "tabUuid": "{8f91bc57-e0f4-472d-b434-e0815826bb0b}",
+    "title": "Pong"
+}
+
