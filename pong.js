@@ -1,4 +1,6 @@
 const pong = document.getElementById('pong')
+const p1Score = document.getElementById('p1-score')
+const p2Score = document.getElementById('p2-score')
 
 // Paddle dimensions
 const dim = {
@@ -27,6 +29,7 @@ class Paddle {
         this.pos = 64
         this.player = opts.player
         this.color = opts.color
+        this.scoreElement = opts.scoreElement
         this.points = 0
     }
 
@@ -46,7 +49,7 @@ class Paddle {
     }
 
     score() {
-        this.points++
+        this.scoreElement.textContent = ++this.points
     }
 
     draw(ctx) {
@@ -82,6 +85,8 @@ class Ball {
     draw(ctx, p1, p2) {
         let {x, y} = this.pos // Current position
         let r = this.radius
+
+        if (x === Infinity || y === Infinity) return // Just scored
 
         // Bounce off the horizontal walls
         if (y - r <= 0 || y + r >= dim.table.h) this.velocity.y *= -1
@@ -162,11 +167,18 @@ class Ball {
         this.velocity.y = 0
         this.started = false
     }
-
 }
 
-var paddle1 = new Paddle({player: 1, color: 'red'})
-var paddle2 = new Paddle({player: 2, color: 'blue'})
+var paddle1 = new Paddle({
+    player: 1,
+    color: 'red',
+    scoreElement: p1Score
+})
+var paddle2 = new Paddle({
+    player: 2,
+    color: 'blue',
+    scoreElement: p2Score
+})
 var ball = new Ball()
 
 function draw() {

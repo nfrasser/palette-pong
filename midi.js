@@ -14,7 +14,6 @@ function onMIDISystemError(err) {
     alert("MIDI not initialized - error encountered:" + err.code)
 }
 
-
 function midiMessageReceived(ev) {
     let cmd = ev.data[0] >> 4
     let channel = ev.data[0] & 0xf

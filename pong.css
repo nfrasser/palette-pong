@@ -1,4 +1,42 @@
+body {
+    font-family: sans-serif;
+}
+
+#score {
+    text-align: center;
+}
+
+#score-separator {
+    display: inline-block;
+    width: 1px;
+    height: 3em;
+    background-color: grey
+}
+
+.player-score {
+    display: inline-block;
+    min-width: 5em
+}
+
+#p1-score, #p2-score {
+    line-height: 2;
+    font-size: 2em
+}
+
 #pong {
     display: block;
     margin: 0 auto;
+    padding: 1em;
+    border: 1px dashed green
+}
+
+#instructions {
+    text-align: center;
+}
+
+#steps-list {
+    max-width: 12em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }

@@ -6,7 +6,25 @@
         <link rel="stylesheet" href="pong.css">
     </head>
     <body>
+        <div id="score">
+            <div class="player-score">Player 1<br><span id="p1-score">0</span></div>
+            <div id="score-separator"></div>
+            <div class="player-score">Player 2<br><span id="p2-score">0</span></div>
+        </div>
         <canvas id="pong" width="1024" height="512"></canvas>
+        <div id="instructions">
+            <h1>Palette Pong</h1>
+            <ol id="steps-list">
+                <li>Get a <a href="https://store.palettegear.com/"
+                target="_blank">Palette Kit</a></li>
+                <li>Install the <a href="https://palettegear.com/start"
+                target="_blank">Palette App</a></li>
+                <li>Load up <a
+                href="https://github.com/nfrasser/palette-pong/raw/master/pong.plp"
+                download="pong.plp">this Palette profile</a></li>
+            </ol>
+        </div>
+
         <script src="midi.js"></script>
         <script src="pong.js"></script>
     </body>
