@@ -2,7 +2,7 @@ const pong = document.getElementById('pong')
 const p1Score = document.getElementById('p1-score')
 const p2Score = document.getElementById('p2-score')
 
-// Paddle dimensions
+// Object dimensions
 const dim = {
     table: {
         w: 1024,
@@ -16,7 +16,9 @@ const dim = {
 
 // Starting speed for the x/y coordinates
 const componentspeed = 10
-const speed = Math.sqrt(2 * componentspeed * componentspeed) // hypotenuse
+
+// Magnitude of the ball velocity vector
+const speed = Math.sqrt(2 * componentspeed * componentspeed)
 
 // Calculate the centre
 const centre = {

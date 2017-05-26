@@ -1,6 +1,10 @@
 // Request browser MIDI access
 window.addEventListener('load', () => {
-    navigator.requestMIDIAccess().then(onMIDIInit, onMIDISystemError)
+    if (typeof navigator.requestMIDIAccess === 'function') {
+        navigator.requestMIDIAccess().then(onMIDIInit, onMIDISystemError)
+    } else {
+        alert("Error: Please use a browser that supports the Web MIDI API.")
+    }
 })
 
 function onMIDIInit(midi) {
@@ -11,7 +15,7 @@ function onMIDIInit(midi) {
 }
 
 function onMIDISystemError(err) {
-    alert("MIDI not initialized - error encountered:" + err.code)
+    alert("MIDI not initialized - error encountered: " + err.code)
 }
 
 function midiMessageReceived(ev) {
@@ -22,7 +26,6 @@ function midiMessageReceived(ev) {
     let velocity = 0
     if (ev.data.length > 2) velocity = ev.data[2]
 
-    // console.log(cmd + ' ' + channel + ' ' + noteNumber + ' ' + velocity)
     let detail = {cmd, channel, noteNumber, velocity}
     var event
 
