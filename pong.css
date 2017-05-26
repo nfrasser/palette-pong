@@ -10,24 +10,24 @@ body {
     display: inline-block;
     width: 1px;
     height: 3em;
-    background-color: grey
+    background-color: grey;
 }
 
 .player-score {
     display: inline-block;
-    min-width: 5em
+    min-width: 5em;
 }
 
 #p1-score, #p2-score {
     line-height: 2;
-    font-size: 2em
+    font-size: 2em;
 }
 
 #pong {
     display: block;
     margin: 0 auto;
     padding: 1em;
-    border: 1px dashed green
+    border: 1px dashed green;
 }
 
 #instructions {
